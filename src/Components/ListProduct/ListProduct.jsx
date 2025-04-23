@@ -3,10 +3,12 @@ import "./ListProduct.css";
 import cross_icon from '../../assets/cross_icon.png'
 const ListProduct = () => {
   const [allproducts, setAllProducts] = useState([]);
+  const backendURL = import.meta.env.VITE_BACKEND_URL;
+
 
 
   const fetchInfo = async () => {
-    await fetch(`https://backend-ecommerce-90ji.onrender.com/allproducts`)
+    await fetch(`${backendURL}/allproducts`)
       .then((res) => res.json())
       .then((data) => {
         setAllProducts(data);
@@ -18,7 +20,7 @@ const ListProduct = () => {
   },[])
 
   const remove_product = async (id) =>{
-    await fetch(`https://backend-ecommerce-90ji.onrender.com/removeproduct`, {
+    await fetch(`${backendURL}/removeproduct`, {
         method: "POST",
         headers: {
             Accept:'application/json',
