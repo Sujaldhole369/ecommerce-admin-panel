@@ -6,6 +6,7 @@ import { useState } from "react";
 import upload_area from "../../assets/upload_area.svg";
 const AddProduct = () => {
   const [image, setImage] = useState(false);
+  const backendURL = process.env.REACT_APP_BACKEND_URL || "http://localhost:4000";
   const [productDetails, setProductDetails] = useState({
     name: "",
     image: "",
@@ -29,7 +30,7 @@ const AddProduct = () => {
     let formData = new FormData();
     formData.append("product", image);
 
-    await fetch(`${process.env.REACT_APP_BACKEND_URL}/upload`, {
+    await fetch(`${backendURL}/upload`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -44,7 +45,7 @@ const AddProduct = () => {
     if (responseData.success) {
       product.image = responseData.image_url;
       console.log(product);
-      await fetch(`${process.env.REACT_APP_BACKEND_URL}/addproduct`,{
+      await fetch(`${backendURL}/addproduct`,{
         method: 'POST',
         headers: {
             Accept: 'application/json',
