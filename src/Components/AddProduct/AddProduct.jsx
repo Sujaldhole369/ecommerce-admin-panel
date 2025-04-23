@@ -6,7 +6,7 @@ import { useState } from "react";
 import upload_area from "../../assets/upload_area.svg";
 const AddProduct = () => {
   const [image, setImage] = useState(false);
-  const backendURL = process.env.REACT_APP_BACKEND_URL || "http://localhost:4000";
+  const backendURL = process.env.REACT_APP_BACKEND_URL;
   const [productDetails, setProductDetails] = useState({
     name: "",
     image: "",
